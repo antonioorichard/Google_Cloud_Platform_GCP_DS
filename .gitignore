@@ -1,0 +1,16 @@
+# Ignorar a pasta de configuração
+#sua_pasta/
+
+# Ignorar o arquivo de leitura
+#README.md
+
+# Ignorar a imagem
+#image.png
+
+#privado/
+Sobre as colunas.txt
+
+stramlit_app.py
+
+#gitmodule
+gitmodules.
