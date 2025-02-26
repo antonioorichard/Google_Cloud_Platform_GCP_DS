@@ -1,0 +1,15 @@
+# A imagem ou contaner de onde irar puxar a imagem
+FROM python:3.8.3-slim
+
+# Onde será executado o local de trabalho
+WORKDIR /app
+
+# Copiar os arquivos para dentro do docker
+COPY . /app
+
+RUN pip --no-cache-dir install numpy pandas seaborn jupyter
+
+# Expondo uma porta
+EXPOSE 8888
+
+CMD ["jupyter", "notebook", "--ip =*", "--port=8888", "--no-browser", "--allow-root"]

@@ -1,0 +1,40 @@
+CREATE TABLE
+  `braided-period-442813-v0.ecommerce_cluster_insider.dados_ecommerce_iterm` ( InvoiceNo STRING,
+    StockCode STRING,
+    Description STRING,
+    Quantity INT64,
+    InvoiceDate DATE,
+    UnitPrice FLOAT64,
+    CustomerID FLOAT64,
+    Country STRING,
+    string_field_8 STRING )
+PARTITION BY
+  InvoiceDate AS (
+  WITH
+    not_nulls AS (
+    SELECT
+      *
+    FROM
+      `braided-period-442813-v0.ecommerce_cluster_insider.ecommerce-insider`
+    WHERE CustomerID IS NOT NULL
+      AND Description IS NOT NULL), filtra_features as ( 
+        select *  
+        from not_nulls 
+        where UnitPrice >= 0.04
+        AND Country NOT IN ('European Community', 'Unspecified')
+        AND StockCode NOT IN ('POST',
+        'D',
+        'DOT',
+        'M',
+        'S',
+        'AMAZONFEE',
+        'm',
+        'DCGSSBOY',
+        'DCGSSGIRL',
+        'PADS',
+        'B',
+        'CRUK' ) AND CustomerID != 16446
+      )
+       select * from filtra_features
+       )
+    

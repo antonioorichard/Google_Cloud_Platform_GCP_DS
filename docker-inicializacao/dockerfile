@@ -1,0 +1,11 @@
+# usar a versão 3.12.3 do python do dockerhub
+FROM python:3.12.3-bullseye 
+
+# criar o diretório de trabalho dentro do docker
+WORKDIR /app
+
+# copiar os arquivos locais para o diretório do docker
+COPY . /app/
+
+# executa os comandos na linha de comando dentro do docker
+CMD ["python", "primeiro_arquivo.py"]
